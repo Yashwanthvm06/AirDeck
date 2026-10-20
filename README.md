@@ -51,7 +51,6 @@
 | :---: | :---: | :---: |
 | <img src="screenshots/pc-companion.png" width="280" alt="PC Companion Window" onerror="this.src='https://placehold.co/400x300/1e293b/white?text=Windows+Companion+UI';" /> | <img src="screenshots/android-trackpad.png" width="200" alt="Android Trackpad" onerror="this.src='https://placehold.co/300x500/0f172a/white?text=Android+Trackpad';" /> | <img src="screenshots/android-gamepad.png" width="200" alt="Android Gamepad" onerror="this.src='https://placehold.co/300x500/0f172a/white?text=Virtual+Gamepad';" /> |
 
-> 💡 *To customize screenshots, drop your PNGs into the [`screenshots/`](screenshots/) folder and push to GitHub!*
 
 ---
 
