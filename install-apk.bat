@@ -16,9 +16,12 @@ echo.
 REM Always prefer the freshly-built release APK, then debug APK from build output.
 REM Never prefer a bundled stale APK over a freshly compiled one.
 set APK_FILE=
-if exist "%~dp0release-builds\AirDesk-v1.0.0-release-signed.apk" (
+if exist "%~dp0release-builds\AirDesk-v1.0.1-release-signed.apk" (
+    set APK_FILE="%~dp0release-builds\AirDesk-v1.0.1-release-signed.apk"
+    echo [*] Using latest v1.0.1 signed RELEASE build APK.
+) else if exist "%~dp0release-builds\AirDesk-v1.0.0-release-signed.apk" (
     set APK_FILE="%~dp0release-builds\AirDesk-v1.0.0-release-signed.apk"
-    echo [*] Using signed RELEASE build APK.
+    echo [*] Using v1.0.0 signed RELEASE build APK.
 ) else if exist "%~dp0android-app\app\build\outputs\apk\release\app-release.apk" (
     set APK_FILE="%~dp0android-app\app\build\outputs\apk\release\app-release.apk"
     echo [*] Using RELEASE build APK.
