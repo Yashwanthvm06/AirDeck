@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using TouchDeckCompanion.Models;
@@ -13,7 +14,6 @@ public partial class MainWindow : Window
     private readonly InputSimulator _inputSimulator;
     private readonly SecurityManager _securityManager;
     private readonly WebSocketServer _server;
-    private bool _minimizeToTray;
     private bool _isExiting;
 
     public MainWindow()
@@ -106,9 +106,9 @@ public partial class MainWindow : Window
             AddLog($"Failed to start server: {ex.Message}");
             StartButton.IsEnabled = true;
             MessageBox.Show(
-                $"Failed to start TouchDeck server:\n\n{ex.Message}\n\n" +
+                $"Failed to start AirDesk server:\n\n{ex.Message}\n\n" +
                 "Try running as Administrator, or check if port 9876 is already in use.",
-                "TouchDeck - Error",
+                "AirDesk - Error",
                 MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
@@ -282,7 +282,7 @@ public partial class MainWindow : Window
                 {
                     var confirm = MessageBox.Show(
                         $"Revoke device \"{device.DeviceName}\"?\n\nThis will immediately disconnect the device if it's currently connected.",
-                        "TouchDeck - Revoke Device",
+                        "AirDesk - Revoke Device",
                         MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
                     if (confirm == MessageBoxResult.Yes)
@@ -320,18 +320,36 @@ public partial class MainWindow : Window
         LogList.Items.Clear();
     }
 
-    private void MinimizeToTray_Click(object sender, RoutedEventArgs e)
+    private void Header_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
-        _minimizeToTray = true;
+        if (e.ButtonState == MouseButtonState.Pressed)
+        {
+            DragMove();
+        }
+    }
+
+    private void MinimizeButton_Click(object sender, RoutedEventArgs e)
+    {
         WindowState = WindowState.Minimized;
+    }
+
+    private void MaximizeButton_Click(object sender, RoutedEventArgs e)
+    {
+        WindowState = WindowState == WindowState.Maximized
+            ? WindowState.Normal
+            : WindowState.Maximized;
+    }
+
+    private void CloseButton_Click(object sender, RoutedEventArgs e)
+    {
+        Close();
     }
 
     private void Window_StateChanged(object sender, EventArgs e)
     {
-        if (WindowState == WindowState.Minimized && _minimizeToTray)
+        if (MaximizeButton != null)
         {
-            Hide();
-            _minimizeToTray = false;
+            MaximizeButton.Content = WindowState == WindowState.Maximized ? "🗗" : "🗖";
         }
     }
 
@@ -341,8 +359,8 @@ public partial class MainWindow : Window
         {
             e.Cancel = true;
             var result = MessageBox.Show(
-                "TouchDeck server is still running. Do you want to stop the server and exit?",
-                "TouchDeck", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                "AirDesk server is still running. Do you want to stop the server and exit?",
+                "AirDesk", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             if (result == MessageBoxResult.Yes)
             {

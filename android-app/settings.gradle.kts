@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "TouchDeck"
+rootProject.name = "AirDesk"
 include(":app")

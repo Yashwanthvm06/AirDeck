@@ -52,7 +52,7 @@ fun ConnectScreen(
 
     val context = LocalContext.current
     val clipboardManager = LocalClipboardManager.current
-    val companionDownloadUrl = "https://github.com/TouchDeck/TouchDeck/releases"
+    val companionDownloadUrl = "https://github.com/Yashwanthvm06/AirDesk/releases"
 
     val isConnected = connState == ConnectionState.CONNECTED
     val isBusy = connState == ConnectionState.CONNECTING ||
@@ -603,8 +603,8 @@ fun ConnectScreen(
                                     try {
                                         val shareIntent = Intent(Intent.ACTION_SEND).apply {
                                             type = "text/plain"
-                                            putExtra(Intent.EXTRA_SUBJECT, "TouchDeck PC Companion Download")
-                                            putExtra(Intent.EXTRA_TEXT, "Download TouchDeck Windows Companion on your PC: $companionDownloadUrl")
+                                            putExtra(Intent.EXTRA_SUBJECT, "AirDesk PC Companion Download")
+                                            putExtra(Intent.EXTRA_TEXT, "Download AirDesk Windows Companion on your PC: $companionDownloadUrl")
                                         }
                                         context.startActivity(Intent.createChooser(shareIntent, "Share Download Link"))
                                     } catch (e: Exception) {

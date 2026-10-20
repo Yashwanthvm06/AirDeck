@@ -58,7 +58,7 @@ fun HomeScreen(
         ) {
             Column {
                 Text(
-                    text = "TOUCHDECK",
+                    text = "AIRDESK",
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Black,
                     letterSpacing = 2.sp,

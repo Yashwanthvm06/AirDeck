@@ -94,7 +94,7 @@ public class WebSocketServer : IDisposable
 
         _isRunning = true;
         OnServerStateChanged?.Invoke(true);
-        Log($"TouchDeck server started on port {_port}");
+        Log($"AirDesk server started on port {_port}");
         Log($"Local IP: {GetLocalIPAddress()}");
 
         _ = AcceptClientsAsync(_cts.Token);
@@ -132,7 +132,7 @@ public class WebSocketServer : IDisposable
 
         _isRunning = false;
         OnServerStateChanged?.Invoke(false);
-        Log("TouchDeck server stopped");
+        Log("AirDesk server stopped");
     }
 
     /// <summary>
@@ -223,7 +223,7 @@ public class WebSocketServer : IDisposable
             {
                 // Serve friendly HTTP response if accessed via browser or health check
                 var body = Encoding.UTF8.GetBytes(
-                    "TouchDeck Companion Server is running. Connect using the TouchDeck Android app.\n");
+                    "AirDesk Companion Server is running. Connect using the AirDesk Android app.\n");
                 var httpResponse =
                     "HTTP/1.1 200 OK\r\n" +
                     "Content-Type: text/plain; charset=utf-8\r\n" +

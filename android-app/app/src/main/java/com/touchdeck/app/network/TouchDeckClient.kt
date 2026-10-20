@@ -67,7 +67,7 @@ class TouchDeckClient {
     }
 
     fun connectWithToken(ip: String, port: Int, devId: String, token: String) {
-        connect(ip = ip, port = port, devName = deviceName.ifBlank { "TouchDeck" }, devId = devId, token = token)
+        connect(ip = ip, port = port, devName = deviceName.ifBlank { "AirDesk" }, devId = devId, token = token)
     }
 
     fun connect(

@@ -1,6 +1,6 @@
 @echo off
-title TouchDeck Windows Companion
+title AirDesk Windows Companion
 cd /d "%~dp0windows-companion"
-echo Starting TouchDeck Windows Companion...
+echo Starting AirDesk Windows Companion...
 dotnet run
 pause

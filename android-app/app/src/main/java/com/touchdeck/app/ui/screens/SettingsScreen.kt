@@ -414,7 +414,7 @@ fun SettingsScreen(
                             ) {
                                 Text(
                                     text = "Privacy & Data Handling:\n\n" +
-                                            "• Local Network Only: TouchDeck connects exclusively to your PC Companion over your local Wi-Fi. No tracking SDKs, cloud backends, or third-party analytics are used.\n\n" +
+                                            "• Local Network Only: AirDesk connects exclusively to your PC Companion over your local Wi-Fi. No tracking SDKs, cloud backends, or third-party analytics are used.\n\n" +
                                             "• Data Transmitted: Device name and a randomly generated device ID are transmitted locally to your PC to identify your device in the companion window. Input commands (keystrokes, mouse deltas, gamepad buttons) are processed directly in real time on your PC and are never logged or stored.\n\n" +
                                             "• Credential Protection: Authentication tokens are stored exclusively in hardware-backed Android Keystore encrypted storage (AES-256-GCM) and verified via HMAC-SHA256 challenge-response.\n\n" +
                                             "• Permissions: Internet and Vibrate permissions are used solely for local communication and haptic feedback.",

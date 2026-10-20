@@ -2,6 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="AirDesk Companion"
+        Icon="Resources/AirDeskCompanion.ico"
         Width="520" Height="720"
         MinWidth="480" MinHeight="600"
         Background="{StaticResource BgDarkBrush}"
@@ -26,7 +27,8 @@
 
         <!-- Header -->
         <Border Grid.Row="0" Background="{StaticResource BgCardBrush}" Padding="24,16"
-                BorderBrush="#FF222233" BorderThickness="0,0,0,1">
+                BorderBrush="#FF222233" BorderThickness="0,0,0,1"
+                MouseLeftButtonDown="Header_MouseLeftButtonDown">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -34,17 +36,11 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
-                    <!-- Logo Glyph -->
+                    <!-- AirDesk Logo -->
                     <Border Width="42" Height="42" CornerRadius="10"
-                            Margin="0,0,14,0" VerticalAlignment="Center">
-                        <Border.Background>
-                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                <GradientStop Color="#FF0088AA" Offset="0"/>
-                                <GradientStop Color="#FF00D4FF" Offset="1"/>
-                            </LinearGradientBrush>
-                        </Border.Background>
-                        <TextBlock Text="⬡" FontSize="22" Foreground="#FF0D0D12"
-                                   HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                            Margin="0,0,14,0" VerticalAlignment="Center" ClipToBounds="True">
+                        <Image Source="Resources/logo.png" Width="42" Height="42"
+                               RenderOptions.BitmapScalingMode="HighQuality"/>
                     </Border>
                     <StackPanel VerticalAlignment="Center">
                         <TextBlock Text="AirDesk" FontSize="20" FontWeight="Bold"
@@ -54,10 +50,18 @@
                     </StackPanel>
                 </StackPanel>
 
-                <!-- Minimize to tray button -->
-                <Button Grid.Column="1" Content="━" Style="{StaticResource AirDeskButton}"
-                        Padding="12,6" FontSize="12" Click="MinimizeToTray_Click"
-                        ToolTip="Minimize to system tray"/>
+                <!-- Window Control Buttons (Minimize, Maximize/Restore, Close) -->
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Button Content="━" Style="{StaticResource AirDeskButton}"
+                            Padding="10,6" Margin="0,0,6,0" FontSize="12" Click="MinimizeButton_Click"
+                            ToolTip="Minimize to Taskbar"/>
+                    <Button x:Name="MaximizeButton" Content="🗖" Style="{StaticResource AirDeskButton}"
+                            Padding="10,6" Margin="0,0,6,0" FontSize="12" Click="MaximizeButton_Click"
+                            ToolTip="Maximize / Restore"/>
+                    <Button Content="✕" Style="{StaticResource AirDeskButton}"
+                            Padding="10,6" FontSize="12" Click="CloseButton_Click"
+                            ToolTip="Close AirDesk"/>
+                </StackPanel>
             </Grid>
         </Border>
 
