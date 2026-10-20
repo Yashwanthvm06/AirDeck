@@ -271,12 +271,12 @@ Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for gui
 
 ## License
 
-This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)** license.
+This project is open-source software licensed under the **GNU General Public License v3.0 (GPL-3.0)**.
 
-- ✅ **Free to use:** Anyone can download, run, and use this project for free.
-- ✅ **Free to modify:** Anyone can remix, adapt, and build upon this code.
-- ❌ **No commercial use:** **NO ONE is permitted to sell, resell, or monetize** this software, its code, or derivative versions.
-- ℹ️ See the full [LICENSE](LICENSE) file for complete terms.
+- ✅ **Free to use & distribute:** Anyone can freely download, inspect, use, and share AirDesk.
+- ✅ **Open & transparent:** Complete source code is public and copyleft-protected.
+- 🛡️ **Copyleft protection:** Any derivative work or modifications must also remain open-source and free under GPL-3.0 (preventing proprietary lock-in).
+- ℹ️ See the full [LICENSE](LICENSE) file for complete legal terms.
 
 ---
 
