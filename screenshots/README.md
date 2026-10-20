@@ -1,4 +1,4 @@
-# TouchDeck Screenshots Directory
+# AirDesk Screenshots Directory
 
 Place your application demo screenshots here with the following recommended filenames:
 
@@ -8,3 +8,4 @@ Place your application demo screenshots here with the following recommended file
 4. `android-keyboard.png` - Screenshot of the phone screen in Keyboard / Media Remote mode.
 
 These images are automatically linked in the main [README.md](../README.md).
+

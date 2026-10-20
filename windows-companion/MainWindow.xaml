@@ -1,8 +1,8 @@
 <Window x:Class="TouchDeckCompanion.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="TouchDeck Companion"
-        Icon="Resources/TouchDeckCompanion.ico"
+        Title="AirDesk Companion"
+        Icon="Resources/AirDeskCompanion.ico"
         Width="520" Height="720"
         MinWidth="480" MinHeight="600"
         Background="{StaticResource BgDarkBrush}"
@@ -48,7 +48,7 @@
                                    HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
                     </Border>
                     <StackPanel VerticalAlignment="Center">
-                        <TextBlock Text="TouchDeck" FontSize="20" FontWeight="Bold"
+                        <TextBlock Text="AirDesk" FontSize="20" FontWeight="Bold"
                                    Foreground="{StaticResource TextPrimaryBrush}"/>
                         <TextBlock Text="Companion Server" FontSize="11"
                                    Foreground="{StaticResource TextSecondaryBrush}" Margin="0,-2,0,0"/>
@@ -56,7 +56,7 @@
                 </StackPanel>
 
                 <!-- Minimize to tray button -->
-                <Button Grid.Column="1" Content="━" Style="{StaticResource TouchDeckButton}"
+                <Button Grid.Column="1" Content="━" Style="{StaticResource AirDeskButton}"
                         Padding="12,6" FontSize="12" Click="MinimizeToTray_Click"
                         ToolTip="Minimize to system tray"/>
             </Grid>
@@ -95,7 +95,7 @@
                                     Style="{StaticResource AccentButton}"
                                     Click="StartServer_Click" Margin="0,0,6,0"/>
                             <Button x:Name="StopButton" Content="■  Stop Server"
-                                    Style="{StaticResource TouchDeckButton}"
+                                    Style="{StaticResource AirDeskButton}"
                                     Click="StopServer_Click" Grid.Column="1" Margin="6,0,0,0"
                                     IsEnabled="False"/>
                         </Grid>
@@ -132,11 +132,11 @@
                             </Border>
                         </Grid>
 
-                        <TextBlock x:Name="GamepadDescText" Text="Native Xbox 360 Controller emulation active. Games detect TouchDeck as an official Xbox Controller."
+                        <TextBlock x:Name="GamepadDescText" Text="Native Xbox 360 Controller emulation active. Games detect AirDesk as an official Xbox Controller."
                                    FontSize="12" Foreground="{StaticResource TextSecondaryBrush}" TextWrapping="Wrap" Margin="0,0,0,10"/>
 
                         <Button x:Name="InstallViGEmButton" Content="⬇  Download ViGEmBus Driver (For Native Xbox 360 Mode)"
-                                Style="{StaticResource TouchDeckButton}" Click="InstallViGEm_Click"
+                                Style="{StaticResource AirDeskButton}" Click="InstallViGEm_Click"
                                 Visibility="Collapsed" FontSize="11" Padding="10,6"/>
                     </StackPanel>
                 </Border>
@@ -221,13 +221,13 @@
                                    Margin="0,0,0,10"/>
                         <TextBlock TextWrapping="Wrap" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}"
                                    LineHeight="20">
-                            If your phone can't connect, you may need to allow TouchDeck through Windows Firewall:
+                            If your phone can't connect, you may need to allow AirDesk through Windows Firewall:
                         </TextBlock>
                         <TextBlock TextWrapping="Wrap" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}"
                                    Margin="0,8,0,0" LineHeight="20">
                             1. Open Windows Security → Firewall &amp; network protection
                             2. Click "Allow an app through firewall"
-                            3. Add TouchDeckCompanion.exe
+                            3. Add AirDeskCompanion.exe
                             4. Enable for Private networks
                         </TextBlock>
                         <TextBlock TextWrapping="Wrap" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}"
@@ -252,7 +252,7 @@
                     <TextBlock Text="Activity Log" FontSize="11" FontWeight="SemiBold"
                                Foreground="{StaticResource TextSecondaryBrush}"/>
                     <Button Content="Clear" HorizontalAlignment="Right"
-                            Style="{StaticResource TouchDeckButton}" Padding="8,2"
+                            Style="{StaticResource AirDeskButton}" Padding="8,2"
                             FontSize="10" Click="ClearLog_Click"/>
                 </Grid>
                 <ListBox x:Name="LogList" Grid.Row="1" Background="Transparent" BorderThickness="0"
@@ -263,3 +263,4 @@
         </Border>
     </Grid>
 </Window>
+
