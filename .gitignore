@@ -1,0 +1,54 @@
+# ==========================================
+# TouchDeck .gitignore (Android + Windows)
+# ==========================================
+
+# Android & Gradle Build Artifacts
+.gradle/
+.kotlin/
+build/
+**/build/
+app/build/
+*.apk
+*.ap_
+*.dex
+*.class
+
+# Android Local & Secret Files (Never commit keystores or machine-specific paths)
+local.properties
+*.jks
+*.keystore
+release-keystore.jks
+keystore.properties
+
+# .NET / C# / WPF Build Artifacts
+bin/
+obj/
+**/bin/
+**/obj/
+*.suo
+*.user
+*.userprefs
+.vs/
+
+# IDE & Editor Configurations
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Release build artifacts (generated, not source)
+release-builds/
+
+# Environment & secret files
+.env
+.env.*
+
+# OS-generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+$RECYCLE.BIN/
+*.bak
+*.tmp

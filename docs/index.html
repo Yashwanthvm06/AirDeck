@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TouchDeck — Turn Your Phone into a Wireless PC Controller</title>
+  <meta name="description" content="Control your PC using your mobile phone. Turn your Android into an ultra-low latency wireless touchpad, mouse, keyboard, and game controller for Windows 10 & 11.">
+  <meta name="keywords" content="control pc using mobile, phone as game controller, use android as mouse, phone trackpad for pc, control windows with phone, mobile remote for pc, android gamepad for pc, wireless mouse app, wifi remote mouse">
+  <meta property="og:title" content="TouchDeck — Control PC Using Mobile Phone (Mouse, Keyboard & Gamepad)">
+  <meta property="og:description" content="Control your Windows PC from your Android phone with zero lag. Wireless trackpad, gamepad, keyboard, and media remote.">
+  <meta property="og:image" content="icon_512.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="ambient-bg"></div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="brand">
+        <img src="icon_512.png" alt="TouchDeck" class="brand-icon">
+        <span>TouchDeck</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#demo">Interactive Demo</a>
+        <a href="#quick-start">How to Install</a>
+        <a href="#features">Features</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="https://github.com/yashwanthvm06/TouchDeck" target="_blank" class="btn-github">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          <span>Star on GitHub</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="pill-badge">
+        <span class="pill-dot"></span>
+        <span>Version 1.0.0 Released · 100% Free & Open Source · No Ads</span>
+      </div>
+
+      <h1>
+        Turn your phone into an <br>
+        <span class="gradient-text">Ultra-Fast PC Controller</span>
+      </h1>
+
+      <p class="lead">
+        A low-latency wireless trackpad, full PC keyboard, console-grade gamepad, and media clicker for Windows 10 & 11. Built entirely over local Wi-Fi with zero cloud tracking.
+      </p>
+
+      <!-- Download Buttons -->
+      <div class="download-group">
+        <a href="https://github.com/yashwanthvm06/TouchDeck/releases/latest" class="download-btn download-btn-windows">
+          <span class="btn-icon">🪟</span>
+          <span class="btn-text">
+            <span class="btn-title">Download for Windows</span>
+            <span class="btn-sub">TouchDeckCompanion.exe (Win 10/11)</span>
+          </span>
+        </a>
+
+        <a href="https://github.com/yashwanthvm06/TouchDeck/releases/latest" class="download-btn download-btn-android">
+          <span class="btn-icon">📱</span>
+          <span class="btn-text">
+            <span class="btn-title">Download for Android</span>
+            <span class="btn-sub">TouchDeck.apk (Android 8.0+)</span>
+          </span>
+        </a>
+      </div>
+
+      <div class="hero-meta">
+        <span>⚡ Sub-5ms input lag</span>
+        <span>•</span>
+        <span>🔒 6-digit PIN & HMAC security</span>
+        <span>•</span>
+        <span>🚫 Zero internet required</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Device Preview -->
+  <section id="demo" class="container">
+    <div class="showcase-wrapper">
+      <div class="tab-nav">
+        <button class="tab-btn active" data-tab="tab-trackpad">🖱️ Precision Trackpad</button>
+        <button class="tab-btn" data-tab="tab-gamepad">🎮 Virtual Gamepad</button>
+        <button class="tab-btn" data-tab="tab-keyboard">⌨️ Full PC Keyboard</button>
+        <button class="tab-btn" data-tab="tab-media">🎬 Media & Slides</button>
+      </div>
+
+      <div class="preview-screen">
+        <div class="preview-status-bar">
+          <div class="status-indicator">
+            <span class="pill-dot"></span> Connected: Desktop-PC (192.168.1.5)
+          </div>
+          <div>Ping: &lt; 2 ms</div>
+        </div>
+
+        <!-- Trackpad Tab -->
+        <div id="tab-trackpad" class="tab-content active">
+          <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+            <div id="demo-trackpad" class="trackpad-box">
+              <div id="demo-cursor" class="trackpad-cursor" style="left: 50%; top: 50%;"></div>
+              <p style="color: var(--text-dim); pointer-events: none; font-size: 0.9rem;">
+                🖱️ Move your mouse here to test responsiveness
+              </p>
+            </div>
+            <div class="trackpad-buttons">
+              <button class="touch-btn">Left Click (Tap)</button>
+              <button class="touch-btn">Right Click (Long Press)</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gamepad Tab -->
+        <div id="tab-gamepad" class="tab-content">
+          <div class="gamepad-box">
+            <div class="dpad">
+              <button class="dpad-btn dpad-up">▲</button>
+              <button class="dpad-btn dpad-left">◀</button>
+              <div class="dpad-center"></div>
+              <button class="dpad-btn dpad-right">▶</button>
+              <button class="dpad-btn dpad-down">▼</button>
+            </div>
+
+            <div style="color: var(--text-dim); font-size: 0.9rem; text-align: center;">
+              Analog Stick &amp; Triggers Emulation
+            </div>
+
+            <div class="abxy-cluster">
+              <button class="abxy-btn btn-y">Y</button>
+              <button class="abxy-btn btn-x">X</button>
+              <button class="abxy-btn btn-b">B</button>
+              <button class="abxy-btn btn-a">A</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Keyboard Tab -->
+        <div id="tab-keyboard" class="tab-content">
+          <div style="text-align: center; max-width: 500px;">
+            <div style="display: flex; gap: 8px; justify-content: center; margin-bottom: 15px; flex-wrap: wrap;">
+              <button class="touch-btn" style="padding: 8px 14px;">Ctrl</button>
+              <button class="touch-btn" style="padding: 8px 14px;">Alt</button>
+              <button class="touch-btn" style="padding: 8px 14px;">Shift</button>
+              <button class="touch-btn" style="padding: 8px 14px;">Win</button>
+              <button class="touch-btn" style="padding: 8px 14px;">Esc</button>
+              <button class="touch-btn" style="padding: 8px 14px;">Enter</button>
+            </div>
+            <input type="text" placeholder="Type Unicode text on phone to send directly to PC..." style="width: 100%; padding: 12px; border-radius: 8px; background: #111726; border: 1px solid var(--border-subtle); color: #fff; text-align: center;" disabled>
+          </div>
+        </div>
+
+        <!-- Media Tab -->
+        <div id="tab-media" class="tab-content">
+          <div style="display: flex; gap: 20px; align-items: center; justify-content: center;">
+            <button class="touch-btn media-btn" style="padding: 16px 20px; font-size: 1.2rem;">⏮️ Prev</button>
+            <button class="touch-btn media-btn" style="padding: 20px 28px; font-size: 1.5rem; background: var(--accent-blue); color: #fff;">⏯️ Play</button>
+            <button class="touch-btn media-btn" style="padding: 16px 20px; font-size: 1.2rem;">⏭️ Next</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3-Step Setup Guide -->
+  <section id="quick-start" class="setup-section container">
+    <div class="section-header">
+      <h2>Easy 3-Step Setup (No Coding Required)</h2>
+      <p>Works in less than 60 seconds right out of the box.</p>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h3>Run on Windows</h3>
+        <p>
+          Download <code>TouchDeckCompanion.exe</code> and double-click to start. No installer wizard or drivers needed.
+        </p>
+        <span class="step-highlight">Shows your PC's IP & 6-Digit PIN</span>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h3>Install on Android</h3>
+        <p>
+          Download <code>TouchDeck.apk</code> on your phone and tap to install. Enable unknown sources if prompted.
+        </p>
+        <span class="step-highlight">Compatible with Android 8.0 to 14+</span>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h3>Enter PIN & Control</h3>
+        <p>
+          Make sure both devices share the same Wi-Fi. Enter the 6-digit PIN shown on your PC into the phone.
+        </p>
+        <span class="step-highlight">Auto-reconnects with 1 tap</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section id="features" class="features-section container">
+    <div class="section-header">
+      <h2>Engineered for Performance &amp; Privacy</h2>
+      <p>Why TouchDeck beats commercial bloated apps.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-box">
+        <div class="feature-icon">⚡</div>
+        <h4>Sub-5ms Latency</h4>
+        <p>Optimized asynchronous WebSockets on local 5GHz Wi-Fi deliver instantaneous response with zero noticeable cursor drag.</p>
+      </div>
+
+      <div class="feature-box">
+        <div class="feature-icon">🔒</div>
+        <h4>PIN &amp; HMAC Security</h4>
+        <p>A random 6-digit pairing PIN and HMAC challenge-response tokens prevent neighbors or uninvited Wi-Fi guests from moving your mouse.</p>
+      </div>
+
+      <div class="feature-box">
+        <div class="feature-icon">🚫</div>
+        <h4>100% Offline &amp; Ad-Free</h4>
+        <p>No account creation, no internet connection, and zero ads. Your mouse and keyboard strokes never leave your private LAN.</p>
+      </div>
+
+      <div class="feature-box">
+        <div class="feature-icon">📳</div>
+        <h4>Custom Haptic Feedback</h4>
+        <p>Dynamic Android vibration waveforms provide satisfying tactile clicks for mouse presses, typing, and gamepad trigger pulls.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="faq-section container">
+    <div class="section-header">
+      <h2>Frequently Asked Questions</h2>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>Do I need internet for TouchDeck to work?</span>
+        <span>▾</span>
+      </div>
+      <div class="faq-answer">
+        No! TouchDeck works 100% offline. Both your PC and phone only need to be connected to the same local router or your phone's mobile hotspot. No data is sent over the internet.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>Is it completely free?</span>
+        <span>▾</span>
+      </div>
+      <div class="faq-answer">
+        Yes! TouchDeck is a student-built open-source project licensed under Creative Commons CC BY-NC 4.0. It is 100% free for everyone, forever.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>What if Windows Firewall shows a prompt?</span>
+        <span>▾</span>
+      </div>
+      <div class="faq-answer">
+        Simply click "Allow Access" on Private Networks. This permits the Companion app to receive input signals sent from your phone over your local Wi-Fi router on port 9876.
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p style="margin-bottom: 8px;">
+        Made with ❤️ by <strong>TouchDeck</strong> · Licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0 (Non-Commercial)</a>
+      </p>
+      <p style="font-size: 0.8rem;">
+        <a href="https://github.com/yashwanthvm06/TouchDeck">View Source on GitHub</a> • 
+        <a href="https://github.com/yashwanthvm06/TouchDeck/releases">Download Binaries</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

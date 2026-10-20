@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>TouchDeckCompanion</AssemblyName>
+    <RootNamespace>TouchDeckCompanion</RootNamespace>
+    <Version>1.0.0</Version>
+    <Description>TouchDeck Windows Companion - Wireless Controller Server</Description>
+    <ApplicationIcon>Resources\TouchDeckCompanion.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\TouchDeckCompanion.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Nefarius.ViGEm.Client" Version="1.21.256" />
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="9.0.4" />
+  </ItemGroup>
+
+</Project>

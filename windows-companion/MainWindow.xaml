@@ -1,0 +1,265 @@
+<Window x:Class="TouchDeckCompanion.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="TouchDeck Companion"
+        Icon="Resources/TouchDeckCompanion.ico"
+        Width="520" Height="720"
+        MinWidth="480" MinHeight="600"
+        Background="{StaticResource BgDarkBrush}"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResizeWithGrip"
+        StateChanged="Window_StateChanged"
+        Closing="Window_Closing">
+
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" Background="{StaticResource BgCardBrush}" Padding="24,16"
+                BorderBrush="#FF222233" BorderThickness="0,0,0,1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                    <!-- Logo Glyph -->
+                    <Border Width="42" Height="42" CornerRadius="10"
+                            Margin="0,0,14,0" VerticalAlignment="Center">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#FF0088AA" Offset="0"/>
+                                <GradientStop Color="#FF00D4FF" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <TextBlock Text="⬡" FontSize="22" Foreground="#FF0D0D12"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                    </Border>
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="TouchDeck" FontSize="20" FontWeight="Bold"
+                                   Foreground="{StaticResource TextPrimaryBrush}"/>
+                        <TextBlock Text="Companion Server" FontSize="11"
+                                   Foreground="{StaticResource TextSecondaryBrush}" Margin="0,-2,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Minimize to tray button -->
+                <Button Grid.Column="1" Content="━" Style="{StaticResource TouchDeckButton}"
+                        Padding="12,6" FontSize="12" Click="MinimizeToTray_Click"
+                        ToolTip="Minimize to system tray"/>
+            </Grid>
+        </Border>
+
+        <!-- Main Content -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Padding="0">
+            <StackPanel Margin="24,20">
+
+                <!-- Server Status Card -->
+                <Border Background="{StaticResource BgCardBrush}" CornerRadius="12" Padding="20" Margin="0,0,0,16">
+                    <StackPanel>
+                        <Grid Margin="0,0,0,12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Server Status" FontSize="15" FontWeight="SemiBold"/>
+                            <Ellipse x:Name="StatusDot" Grid.Column="1" Width="10" Height="10"
+                                     Fill="{StaticResource ErrorRedBrush}" VerticalAlignment="Center"/>
+                        </Grid>
+
+                        <TextBlock x:Name="StatusText" Text="Server Stopped" FontSize="13"
+                                   Foreground="{StaticResource TextSecondaryBrush}" Margin="0,0,0,4"/>
+
+                        <TextBlock x:Name="IpAddressText" Text="" FontSize="12"
+                                   Foreground="{StaticResource AccentCyanBrush}" Margin="0,0,0,14"
+                                   FontFamily="Consolas"/>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="StartButton" Content="▶  Start Server"
+                                    Style="{StaticResource AccentButton}"
+                                    Click="StartServer_Click" Margin="0,0,6,0"/>
+                            <Button x:Name="StopButton" Content="■  Stop Server"
+                                    Style="{StaticResource TouchDeckButton}"
+                                    Click="StopServer_Click" Grid.Column="1" Margin="6,0,0,0"
+                                    IsEnabled="False"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <!-- Pairing Code Card -->
+                <Border x:Name="PairingCard" Background="{StaticResource BgCardBrush}"
+                        CornerRadius="12" Padding="20" Margin="0,0,0,16" Visibility="Collapsed">
+                    <StackPanel HorizontalAlignment="Center">
+                        <TextBlock Text="PAIRING CODE" FontSize="11" FontWeight="SemiBold"
+                                   Foreground="{StaticResource TextSecondaryBrush}"
+                                   HorizontalAlignment="Center" Margin="0,0,0,8"/>
+                        <TextBlock x:Name="PairingCodeText" Text="000000" FontSize="42" FontWeight="Bold"
+                                   Foreground="{StaticResource AccentCyanBrush}"
+                                   HorizontalAlignment="Center" FontFamily="Consolas"/>
+                        <TextBlock Text="Enter this code on your Android device"
+                                   FontSize="12" Foreground="{StaticResource TextSecondaryBrush}"
+                                   HorizontalAlignment="Center" Margin="0,6,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Virtual Gamepad Card -->
+                <Border Background="{StaticResource BgCardBrush}" CornerRadius="12" Padding="20" Margin="0,0,0,16">
+                    <StackPanel>
+                        <Grid Margin="0,0,0,8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Virtual Gamepad" FontSize="15" FontWeight="SemiBold"/>
+                            <Border x:Name="GamepadBadge" Grid.Column="1" Background="#263820" CornerRadius="4" Padding="8,2">
+                                <TextBlock x:Name="GamepadBadgeText" Text="Xbox 360 Active" FontSize="11" Foreground="{StaticResource SuccessGreenBrush}"/>
+                            </Border>
+                        </Grid>
+
+                        <TextBlock x:Name="GamepadDescText" Text="Native Xbox 360 Controller emulation active. Games detect TouchDeck as an official Xbox Controller."
+                                   FontSize="12" Foreground="{StaticResource TextSecondaryBrush}" TextWrapping="Wrap" Margin="0,0,0,10"/>
+
+                        <Button x:Name="InstallViGEmButton" Content="⬇  Download ViGEmBus Driver (For Native Xbox 360 Mode)"
+                                Style="{StaticResource TouchDeckButton}" Click="InstallViGEm_Click"
+                                Visibility="Collapsed" FontSize="11" Padding="10,6"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Connection Info Card -->
+                <Border Background="{StaticResource BgCardBrush}" CornerRadius="12" Padding="20" Margin="0,0,0,16">
+                    <StackPanel>
+                        <TextBlock Text="Connection Info" FontSize="15" FontWeight="SemiBold" Margin="0,0,0,12"/>
+
+                        <Grid Margin="0,0,0,8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="IP Address:" FontSize="13"
+                                       Foreground="{StaticResource TextSecondaryBrush}" Width="100"/>
+                            <TextBlock x:Name="ConnInfoIp" Grid.Column="1" Text="—" FontSize="13"
+                                       FontFamily="Consolas"/>
+                        </Grid>
+
+                        <Grid Margin="0,0,0,8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Port:" FontSize="13"
+                                       Foreground="{StaticResource TextSecondaryBrush}" Width="100"/>
+                            <TextBlock x:Name="ConnInfoPort" Grid.Column="1" Text="9876" FontSize="13"
+                                       FontFamily="Consolas"/>
+                        </Grid>
+
+                        <Grid Margin="0,0,0,4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="PC Name:" FontSize="13"
+                                       Foreground="{StaticResource TextSecondaryBrush}" Width="100"/>
+                            <TextBlock x:Name="ConnInfoName" Grid.Column="1" FontSize="13"
+                                       Text="{Binding Source={x:Static SystemParameters.FullPrimaryScreenHeight}, 
+                                       FallbackValue='—'}"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <!-- Connected Devices Card -->
+                <Border Background="{StaticResource BgCardBrush}" CornerRadius="12" Padding="20" Margin="0,0,0,16">
+                    <StackPanel>
+                        <Grid Margin="0,0,0,12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Connected Devices" FontSize="15" FontWeight="SemiBold"/>
+                            <TextBlock x:Name="DeviceCountText" Grid.Column="1" Text="0"
+                                       FontSize="13" Foreground="{StaticResource AccentCyanBrush}"/>
+                        </Grid>
+
+                        <TextBlock x:Name="NoDevicesText" Text="No devices connected"
+                                   FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"
+                                   FontStyle="Italic"/>
+
+                        <StackPanel x:Name="DevicesList"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Paired Devices Card -->
+                <Border Background="{StaticResource BgCardBrush}" CornerRadius="12" Padding="20" Margin="0,0,0,16">
+                    <StackPanel>
+                        <TextBlock Text="Paired Devices" FontSize="15" FontWeight="SemiBold" Margin="0,0,0,12"/>
+                        <StackPanel x:Name="PairedDevicesList"/>
+                        <TextBlock x:Name="NoPairedText" Text="No devices paired yet"
+                                   FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"
+                                   FontStyle="Italic"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Firewall Help Card -->
+                <Border Background="{StaticResource BgCardBrush}" CornerRadius="12" Padding="20" Margin="0,0,0,16">
+                    <StackPanel>
+                        <TextBlock Text="Firewall Troubleshooting" FontSize="15" FontWeight="SemiBold"
+                                   Margin="0,0,0,10"/>
+                        <TextBlock TextWrapping="Wrap" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}"
+                                   LineHeight="20">
+                            If your phone can't connect, you may need to allow TouchDeck through Windows Firewall:
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}"
+                                   Margin="0,8,0,0" LineHeight="20">
+                            1. Open Windows Security → Firewall &amp; network protection
+                            2. Click "Allow an app through firewall"
+                            3. Add TouchDeckCompanion.exe
+                            4. Enable for Private networks
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}"
+                                   Margin="0,8,0,0" LineHeight="20">
+                            Both devices must be on the same Wi-Fi network.
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Log Panel -->
+        <Border Grid.Row="2" Background="{StaticResource BgCardBrush}" Padding="12,8"
+                BorderBrush="#FF222233" BorderThickness="0,1,0,0" MaxHeight="160">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Margin="0,0,0,6">
+                    <TextBlock Text="Activity Log" FontSize="11" FontWeight="SemiBold"
+                               Foreground="{StaticResource TextSecondaryBrush}"/>
+                    <Button Content="Clear" HorizontalAlignment="Right"
+                            Style="{StaticResource TouchDeckButton}" Padding="8,2"
+                            FontSize="10" Click="ClearLog_Click"/>
+                </Grid>
+                <ListBox x:Name="LogList" Grid.Row="1" Background="Transparent" BorderThickness="0"
+                         Foreground="{StaticResource TextSecondaryBrush}" FontSize="11"
+                         FontFamily="Consolas" MaxHeight="100"
+                         ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
