@@ -27,7 +27,7 @@
         <SolidColorBrush x:Key="WarningAmberBrush" Color="{StaticResource WarningAmber}"/>
 
         <!-- Button Style -->
-        <Style x:Key="TouchDeckButton" TargetType="Button">
+        <Style x:Key="AirDeskButton" TargetType="Button">
             <Setter Property="Background" Value="{StaticResource BgSurfaceBrush}"/>
             <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
             <Setter Property="BorderBrush" Value="{StaticResource AccentCyanDimBrush}"/>
@@ -58,6 +58,8 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style x:Key="TouchDeckButton" TargetType="Button" BasedOn="{StaticResource AirDeskButton}" />
 
         <Style x:Key="AccentButton" TargetType="Button" BasedOn="{StaticResource TouchDeckButton}">
             <Setter Property="Background">

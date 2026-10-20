@@ -18,11 +18,14 @@ public partial class MainWindow : Window
 
     public MainWindow()
     {
+        App.Log("MainWindow ctor starting");
         InitializeComponent();
+        App.Log("MainWindow InitializeComponent succeeded");
 
         _inputSimulator = new InputSimulator();
         _securityManager = new SecurityManager();
         _server = new WebSocketServer(_inputSimulator, _securityManager);
+        App.Log("WebSocketServer created");
 
         // Wire up events
         _server.OnLog += msg => Dispatcher.Invoke(() => AddLog(msg));
@@ -33,6 +36,7 @@ public partial class MainWindow : Window
 
         _server.GamepadService.OnGamepadStatusChanged += (active, msg) => Dispatcher.Invoke(() => UpdateGamepadUI(active, msg));
         UpdateGamepadUI(_server.GamepadService.IsViGEmActive, _server.GamepadService.StatusMessage);
+        App.Log("Gamepad UI initialized");
 
         // Set connection info
         ConnInfoIp.Text = WebSocketServer.GetLocalIPAddress();
@@ -40,9 +44,14 @@ public partial class MainWindow : Window
         ConnInfoName.Text = Environment.MachineName;
 
         RefreshPairedDevices();
+        App.Log("MainWindow ctor complete");
 
         // Auto-start server on launch
-        Loaded += (_, _) => StartServer_Click(this, new RoutedEventArgs());
+        Loaded += (_, _) =>
+        {
+            App.Log("MainWindow Loaded event fired");
+            StartServer_Click(this, new RoutedEventArgs());
+        };
     }
 
     private void UpdateGamepadUI(bool isViGEmActive, string statusMessage)
@@ -83,13 +92,17 @@ public partial class MainWindow : Window
 
     private async void StartServer_Click(object sender, RoutedEventArgs e)
     {
+        App.Log("StartServer_Click enter");
         try
         {
             StartButton.IsEnabled = false;
+            App.Log("Calling _server.StartAsync()...");
             await _server.StartAsync();
+            App.Log("_server.StartAsync() completed");
         }
         catch (Exception ex)
         {
+            App.Log($"Failed to start server: {ex}");
             AddLog($"Failed to start server: {ex.Message}");
             StartButton.IsEnabled = true;
             MessageBox.Show(
@@ -114,6 +127,7 @@ public partial class MainWindow : Window
 
     private void UpdateServerState(bool running)
     {
+        App.Log($"UpdateServerState running={running}");
         if (running)
         {
             StatusDot.Fill = (Brush)FindResource("SuccessGreenBrush");
